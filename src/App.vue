@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/login">Sisse logimine</router-link> |
+    <router-link to="/user">Kodu</router-link> |
   </nav>
   <router-view/>
 </template>
