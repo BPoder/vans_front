@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import UserView from "@/views/UserView.vue";
+import VansView from "@/views/VansView.vue";
+import UserMessageView from "@/views/UserMessageView.vue";
 
 const routes = [
   {
@@ -18,6 +20,16 @@ const routes = [
     path: '/user',
     name: 'userRoute',
     component: UserView
+  },
+  {
+    path: '/usermessage',
+    name: 'userMessageRoute',
+    component: UserMessageView
+  },
+  {
+    path: '/vans',
+    name: 'vansRoute',
+    component: VansView
   },
 ]
 
