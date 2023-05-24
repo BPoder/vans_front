@@ -1,12 +1,9 @@
 <template>
     <div class="container text-center">
-
         <AlertDanger :message="message"/>
-
-        <div class="row justify-content-center">
+        <div @keydown.enter="login" class="row justify-content-center">
 
             <div class=" col">
-                <!--                <form>-->
                 <div class="container text-center mb-3, col-3">
                     <label for="username" class="form-label">Kasutajanimi</label>
                     <input v-model="username" type="text" class="form-control" id="username">
@@ -15,8 +12,7 @@
                     <label for="password" class="form-label">Salasõna</label>
                     <input v-model="password" type="password" class="form-control" id="password">
                 </div>
-                <button v-on:click="login" type="Submit" class="btn btn-primary">Logi sisse</button>
-                <!--                </form>-->
+                <button v-on:click="login" type="submit" class="btn btn-primary">Logi sisse</button>
             </div>
         </div>
     </div>
@@ -34,12 +30,12 @@ export default {
             username: '',
             password: '',
             message: '',
-            loginResponse:{
+            loginResponse: {
                 userId: 0,
                 roleName: '',
                 driverId: 0
             },
-            errorResponse:{
+            errorResponse: {
                 message: '',
                 errorCode: 0
             }
@@ -68,12 +64,22 @@ export default {
                 sessionStorage.setItem('roleName', this.loginResponse.roleName)
                 sessionStorage.setItem('driverId', this.loginResponse.driverId)
                 this.$emit('event-update-nav-menu')
-                router.push({name: 'userRoute'})
+                if (this.loginResponse.roleName === 'driver') {
+                    router.push({name: 'userRoute'});
+                } else {
+                    router.push({name: 'vansRoute'});
+                }
+                // router.push({name: 'userRoute'});
             }).catch(error => {
                 this.errorResponse = error.response.data
-                this.message = this.errorResponse.message
+                if (this.errorResponse.errorCode === 111) {
+                    this.message = this.errorResponse.message
+                } else {
+                    router.push({name: 'errorRoute'})
+                }
             })
-        }
+        },
     }
 }
+
 </script>

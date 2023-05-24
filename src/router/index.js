@@ -4,6 +4,7 @@ import LoginView from "@/views/LoginView.vue";
 import UserView from "@/views/UserView.vue";
 import VansView from "@/views/VansView.vue";
 import UserMessageView from "@/views/UserMessageView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/vans',
     name: 'vansRoute',
     component: VansView
+  },
+  {
+    path: '/error',
+    name: 'errorRoute',
+    component: ErrorView
   },
 ]
 

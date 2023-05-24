@@ -1,40 +1,51 @@
 <template>
     <nav>
         <router-link to="/">WELCOME</router-link> |
+
         <router-link v-if="userId === null" to="/login">Sisse logimine</router-link>
         <template v-else>
-            <router-link to="/user">Kodu</router-link> |
-            <router-link to="/userMessage">Teated</router-link> |
-
             <template v-if="roleName === 'admin'">
                 <router-link to="/vans">Kaubikud</router-link> |
 
             </template>
-            <router-link to="/logout">Välja logimine</router-link> |
+
+            <template v-else>
+                <router-link to="/user">Kodu</router-link> |
+                <router-link to="/userMessage">Teated</router-link>
+            </template>
+           |
+
+            <router-link to="#" @click="handleLogout">Välja logimine</router-link> |
         </template>
 
     </nav>
+    <LogoutModal ref="logoutModalRef" @event-update-nav-menu="updateNavMenu"/>
     <router-view @event-update-nav-menu="updateNavMenu"/>
 </template>
 
 <script>
+import Modal from "@/components/modal/Modal.vue";
+import LogoutModal from "@/components/modal/LogoutModal.vue";
+
 export default {
-    data: function () {
+    components: {LogoutModal, Modal},
+    data() {
         return {
             userId: sessionStorage.getItem('userId'),
             roleName: sessionStorage.getItem('roleName')
         }
     },
     methods: {
-        updateNavMenu: function () {
+        updateNavMenu() {
             this.userId = sessionStorage.getItem('userId')
-        }
+            this.roleName = sessionStorage.getItem('roleName')
+        },
+
+        handleLogout() {
+            this.$refs.logoutModalRef.$refs.modalRef.openModal()
+        },
     }
 }
-</script>
-
-<script>
-
 </script>
 
 <style>
