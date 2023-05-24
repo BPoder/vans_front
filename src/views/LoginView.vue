@@ -23,7 +23,7 @@
 
 <script>
 import AlertMessage from "@/views/AlertMessage.vue";
-import router from  "@/router"
+import router from "@/router"
 
 export default {
     name: 'LoginView',
@@ -53,26 +53,34 @@ export default {
                 this.sendLoginRequest();
             }
         },
-            sendLoginRequest: function() {
-                this.$http.get('/login', {
-                    params: {
-                        username: this.username,
-                        password: this.password
-                    }
-                }).then(response => {
-                    this.loginResponse = response.data
-                    sessionStorage.setItem('userId', this.loginResponse.user)
-                    sessionStorage.setItem('roleName', this.loginResponse.roleName)
-                    sessionStorage.setItem('driverId', this.loginResponse.driverId)
-                    router.push({name:'userRoute'})
-                }).catch(error => {
-                    this.errorResponse = error.response.data
-                    if (this.errorResponse.errorCode === 111) {
-                        this.message = this.errorResponse.message
+        sendLoginRequest: function () {
+            this.$http.get('/login', {
+                params: {
+                    username: this.username,
+                    password: this.password
                 }
-                })
+            }).then(response => {
+                this.loginResponse = response.data
+                sessionStorage.setItem('userId', this.loginResponse.user)
+                sessionStorage.setItem('roleName', this.loginResponse.roleName)
+                sessionStorage.setItem('driverId', this.loginResponse.driverId)
+                this.$emit('event-update-nav-menu')
+                if (this.loginResponse.roleName === 'driver') {
+                    router.push({name: 'userRoute'})
+                } else {
+                    router.push({name: 'adminVansRoute'})
+                }
+
+            }).catch(error => {
+                this.errorResponse = error.response.data
+                if (this.errorResponse.errorCode === 111) {
+                    this.message = this.errorResponse.message
+                } else {
+                    router.push({name: 'errorRoute'})
+                }
+            })
         },
-        }
+    }
 }
 </script>
 
