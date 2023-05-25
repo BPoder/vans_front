@@ -35,6 +35,8 @@
 </template>
 
 <script setup>
-
+export default {
+    name: 'UserMessageView'
+}
 </script>
 

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import WelcomeView from "@/views/WelcomeView.vue";
 import UserHomeView from "@/views/user/UserHomeView.vue";
@@ -8,6 +7,7 @@ import AdminVansView from "@/views/admin/AdminVansView.vue";
 import AdminDriversView from "@/views/admin/AdminDriversView.vue";
 import AdminMaintenanceView from "@/views/admin/AdminMaintenanceView.vue";
 import AdminMileageView from "@/views/admin/AdminMileageView.vue";
+import ErrorView from "@/views/ErrorView.vue";
 
 const routes = [
   {
@@ -49,6 +49,11 @@ const routes = [
     path: '/admin/mileage',
     name: 'adminMileageRoute',
     component: AdminMileageView
+  },
+  {
+    path: '/error',
+    name: 'errorRoute',
+    component: ErrorView
   }
 
 ]

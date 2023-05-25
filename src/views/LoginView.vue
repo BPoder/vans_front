@@ -53,6 +53,7 @@ export default {
                 this.sendLoginRequest();
             }
         },
+
         sendLoginRequest: function () {
             this.$http.get('/login', {
                 params: {
@@ -70,7 +71,6 @@ export default {
                 } else {
                     router.push({name: 'adminVansRoute'})
                 }
-
             }).catch(error => {
                 this.errorResponse = error.response.data
                 if (this.errorResponse.errorCode === 111) {

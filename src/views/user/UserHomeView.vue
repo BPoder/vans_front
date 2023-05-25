@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    name: 'UserHomeView',
+    name: 'UserHomeView'
     data: function () {
         return {
             userId: sessionStorage.getItem('userId'),

@@ -1,5 +1,8 @@
-<script setup>
+<script>
 
+export default {
+    name: 'AdminDriversView'
+}
 </script>
 
 <template>
