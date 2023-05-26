@@ -16,7 +16,7 @@
             <td>{{van.cityName}}</td>
             <td>{{van.model}}</td>
             <td>{{van.plateNumber}}</td>
-            <td>{{van.insuranceProvider}}</td>
+            <td>{{van.insuranceProvider + ' ' + van.insurancePhoneNumber}}</td>
             <td>{{van.nextInspection}}</td>
             <td>
                 <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
