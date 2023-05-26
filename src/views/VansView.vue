@@ -3,15 +3,15 @@
         <div class="row">
             <div class="col">
 <!--                <AlertSuccess :message="successMessage"/>-->
-                <h1>Vannitabel</h1>
+                <h1>Kaubikud</h1>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row container justify-content-center">
             <div class="col col-3">
                 <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
             </div>
-            <div class="col col-2">
+            <div class="col col-3">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
             </div>
             <div class="row">
@@ -33,7 +33,7 @@ import VansDropdown from "@/components/VansDropdown.vue";
 export default {
     name: "VansView",
     components: {VansDropdown, CitiesDropdown, VansTable},
-    data: function () {
+    data() {
         return{
             userId: sessionStorage.getItem('userId'),
             roleName: sessionStorage.getItem('roleName')
