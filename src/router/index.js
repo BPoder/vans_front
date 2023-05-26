@@ -5,6 +5,9 @@ import UserView from "@/views/UserView.vue";
 import VansView from "@/views/VansView.vue";
 import UserMessageView from "@/views/UserMessageView.vue";
 import ErrorView from "@/views/ErrorView.vue";
+import MaintenanceView from "@/views/MaintenanceView.vue";
+import DriversView from "@/views/DriversView.vue";
+import MileageView from "@/views/MileageView.vue";
 
 const routes = [
   {
@@ -36,6 +39,21 @@ const routes = [
     path: '/error',
     name: 'errorRoute',
     component: ErrorView
+  },
+  {
+    path: '/maintenance',
+    name: 'maintenanceRoute',
+    component: MaintenanceView
+  },
+  {
+    path: '/drivers',
+    name: 'driverRoute',
+    component: DriversView
+  },
+  {
+    path: '/mileage',
+    name: 'mileageRoute',
+    component: MileageView
   },
 ]
 

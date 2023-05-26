@@ -6,7 +6,9 @@
         <template v-else>
             <template v-if="roleName === 'admin'">
                 <router-link to="/vans">Kaubikud</router-link> |
-
+                <router-link to="/maintenance">Hooldused</router-link> |
+                <router-link to="/drivers">Juhid</router-link> |
+                <router-link to="/mileage">Läbisõit</router-link> |
             </template>
 
             <template v-else>
