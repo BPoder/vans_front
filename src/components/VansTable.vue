@@ -18,22 +18,20 @@
             <td>{{van.plateNumber}}</td>
             <td>{{van.insuranceProvider}}</td>
             <td>{{van.nextInspection}}</td>
-
-<!--            <td>Tallinn</td>-->
-<!--            <td>Reno Master</td>-->
-<!--            <td>123ABC</td>-->
-<!--            <td>Iisi Miisi-->
-<!--                +372 123456-->
-<!--            </td>-->
-<!--            <td>25.08.2023</td>-->
-<!--            <td>change nupp</td>-->
-<!--            <td>del nupp</td>-->
-
+            <td>
+                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+            </td>
+            <td>
+                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
+            </td>
         </tr>
         </tbody>
     </table>
 </template>
+
 <script>
+import router from "@/router";
+
 export default {
     name: 'VansTable',
     data() {
@@ -66,9 +64,8 @@ export default {
                 }
             ).then(response => {
                 this.vans = response.data
-            }).catch(error => {
-                const errorResponseBody = error.response.data
-            })
+            }).catch(() => router.push({name: 'errorRoute'}))
+
         },
         setSelectedCityId(selectedCityId) {
             this.selectedCityId = selectedCityId
