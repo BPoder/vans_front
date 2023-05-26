@@ -9,6 +9,7 @@
                 <router-link to="/maintenance">Hooldused</router-link> |
                 <router-link to="/drivers">Juhid</router-link> |
                 <router-link to="/mileage">Läbisõit</router-link> |
+                <router-link to="/adminMessage">Teated</router-link> |
             </template>
 
             <template v-else>
