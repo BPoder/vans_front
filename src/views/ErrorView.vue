@@ -1,6 +1,6 @@
 <template>
-    <h1>Siin pole midagi ehk see ei vääri küünlaid</h1>
-    <font-awesome-icon :icon="['fas', 'menorah']" size="2xl"/>
+<h1>You have a problem, and nobody can help you...</h1>
+    <img src="../assets/BA-fool.png" :style="{ width: '100px', height: '150px' }">
 </template>
 
 <script>
