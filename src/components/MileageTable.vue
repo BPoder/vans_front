@@ -23,7 +23,8 @@ export default {
     data() {
         return {
             selectedVanId: 0,
-            selectedDate: '',
+            selectedMonthNumber: 0,
+            selectedYearNumber: 0,
             mileages: [
                 {
                     id: 0,
@@ -39,7 +40,8 @@ export default {
             this.$http.get("/mileage/all-info", {
                     params: {
                         vanId: this.selectedVanId,
-                        // someRequestParam2: this.someDataBlockVariable2
+                        monthNumber: this.selectedMonthNumber,
+                        yearNumber: this.selectedYearNumber,
                     }
                 }
             ).then(response => {
@@ -49,9 +51,16 @@ export default {
         setSelectedVanId(selectedVanId) {
             this.selectedVanId = selectedVanId
         },
+        setSelectedMontNumber(selectedMonthNumber){
+            this.selectedMonthNumber = selectedMonthNumber
+        },
+        setSelectedYearNumber(selectedYearNumber){
+            this.selectedYearNumber = selectedYearNumber
+        }
+
     },
     beforeMount() {
-        // this.getMileages()
+        this.getMileages()
     }
 }
 </script>
