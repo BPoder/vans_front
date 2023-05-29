@@ -19,7 +19,7 @@ import CitiesDropdown from "@/views/admin/CitiesDropdown.vue";
 export default {
     name: 'AdminVansView',
     components: {CitiesDropdown, VansDropdown, AdminVansTable},
-    data: function () {
+    data() {
         return {
             userId: sessionStorage.getItem('userId'),
             roleName: sessionStorage.getItem('roleName')

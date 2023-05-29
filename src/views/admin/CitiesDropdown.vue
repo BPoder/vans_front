@@ -12,37 +12,33 @@ import router from "@/router";
 
 export default {
     name: 'CitiesDropdown',
-    data: function () {
+    data() {
         return {
-            selectedCityId: 0,
+            selectedCityId: '0',
             cities: [
                 {
                     cityId: 0,
-                    cityName: ''
+                    cityName: '',
                 }
             ]
         }
     },
     methods: {
-
-        emitSelectedCityId: function () {
+        emitSelectedCityId() {
             this.$emit('event-emit-selected-city-id', Number(this.selectedCityId))
-
         },
 
-        getCities: function () {
+        getCities() {
             this.$http.get("/all-cities")
+
                 .then(response => {
                     this.cities = response.data
                 })
                 .catch(() => router.push({name: 'errorRoute'}))
-        }
+        },
     },
-    setSelectedCityId(cityId) {
-        this.selectedCityId = cityId
-    },
-       beforeMount() {
-         this.getCities()
-       }
+    beforeMount() {
+        this.getCities()
+    }
 }
 </script>
