@@ -37,10 +37,10 @@ import router from "@/router";
 export default {
     name: "DriversTable",
     data() {
-        return{
+        return {
             selectedCityId: 0,
             selectedDriverId: 0,
-            drivers:[
+            drivers: [
                 {
                     driverId: 0,
                     username: '',
@@ -53,12 +53,12 @@ export default {
             ]
         }
     },
-    methods: {
+    methods:{
         getDrivers: function () {
             this.$http.get("/driver/all-info", {
                     params: {
                         cityId: this.selectedCityId,
-                        driverId: this.selectedDriverId
+                        driverId: this.selectedDriverId,
                     }
                 }
             ).then(response => {
@@ -75,5 +75,6 @@ export default {
     beforeMount() {
         this.getDrivers()
     }
+
 }
 </script>

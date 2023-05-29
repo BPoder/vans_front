@@ -59,13 +59,12 @@ export default {
             this.$http.get("/van/all-info", {
                     params: {
                         cityId: this.selectedCityId,
-                        vanId: this.selectedVanId,
+                        vanId: this.selectedVanId
                     }
                 }
             ).then(response => {
                 this.vans = response.data
             }).catch(() => router.push({name: 'errorRoute'}))
-
         },
         setSelectedCityId(selectedCityId) {
             this.selectedCityId = selectedCityId

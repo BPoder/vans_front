@@ -12,11 +12,15 @@
                 <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
             </div>
             <div class="col col-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected value="=0">Kõik juhid</option>
+                    <option value="1">One</option>
+                </select>
                 Juhid dropdown
             </div>
             <div class="row">
                 <div class="col col-9 container text-center">
-                    <DriversTable ref="driversTableRef"/>
+                   <DriversTable ref="driversTableRef"/>
                 </div>
 
             </div>
@@ -31,16 +35,19 @@ import DriversTable from "@/components/DriversTable.vue";
 export default {
     name: "DriversView",
     components: {DriversTable, CitiesDropdown},
-    data() {
-        return{
 
+    data(){
+        return{
+            userId: sessionStorage.getItem('userId'),
+            roleName: sessionStorage.getItem('roleName')
         }
     },
     methods: {
-        setSelectedCityId(selectedCityId) {
+        setSelectedCityId(selectedCityId){
             this.$refs.driversTableRef.setSelectedCityId(selectedCityId)
             this.$refs.driversTableRef.getDrivers()
-        },
+        }
     }
+
 }
 </script>
