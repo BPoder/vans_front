@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
-import UserView from "@/views/UserView.vue";
-import VansView from "@/views/VansView.vue";
-import UserMessageView from "@/views/UserMessageView.vue";
+import UserView from "@/views/driver/UserView.vue";
+import VansView from "@/views/admin/VansView.vue";
+import UserMessageView from "@/views/driver/UserMessageView.vue";
 import ErrorView from "@/views/ErrorView.vue";
-import MaintenanceView from "@/views/MaintenanceView.vue";
-import DriversView from "@/views/DriversView.vue";
-import MileageView from "@/views/MileageView.vue";
-import AdminMessageView from "@/views/AdminMessageView.vue";
+import MaintenanceView from "@/views/admin/MaintenanceView.vue";
+import DriversView from "@/views/admin/DriversView.vue";
+import MileageView from "@/views/admin/MileageView.vue";
+import AdminMessageView from "@/views/admin/AdminMessageView.vue";
 
 const routes = [
   {
