@@ -16,7 +16,7 @@
             <td>{{van.cityName}}</td>
             <td>{{van.model}}</td>
             <td>{{van.plateNumber}}</td>
-            <td>{{van.insuranceProvider}}</td>
+            <td>{{van.insuranceProvider + ' ' + van.insurancePhoneNumber}}</td>
             <td>{{van.nextInspection}}</td>
             <td>
                 <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
@@ -59,13 +59,12 @@ export default {
             this.$http.get("/van/all-info", {
                     params: {
                         cityId: this.selectedCityId,
-                        vanId: this.selectedVanId,
+                        vanId: this.selectedVanId
                     }
                 }
             ).then(response => {
                 this.vans = response.data
             }).catch(() => router.push({name: 'errorRoute'}))
-
         },
         setSelectedCityId(selectedCityId) {
             this.selectedCityId = selectedCityId
