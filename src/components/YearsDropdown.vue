@@ -29,7 +29,6 @@ export default {
             // Or you can assign it to a Vue reactive property for further use
             this.years = array;
         }
-
     },
     mounted() {
         this.getYears()

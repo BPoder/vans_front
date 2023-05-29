@@ -19,11 +19,12 @@
 import router from "@/router";
 
 export default {
-    name: "MileageTable",
+    name: 'MileageTable',
     data() {
         return {
             selectedVanId: 0,
-            selectedDate: '',
+            selectedMonth: 0,
+            selectedYear: 0,
             mileages: [
                 {
                     id: 0,
@@ -39,7 +40,8 @@ export default {
             this.$http.get("/mileage/all-info", {
                     params: {
                         vanId: this.selectedVanId,
-                        // someRequestParam2: this.someDataBlockVariable2
+                        monthNumber: this.selectedMonth,
+                        yearNumber: this.selectedYear
                     }
                 }
             ).then(response => {
@@ -49,9 +51,15 @@ export default {
         setSelectedVanId(selectedVanId) {
             this.selectedVanId = selectedVanId
         },
+        setSelectedMonth(selectedMonth) {
+            this.selectedMonth = selectedMonth
+        },
+        setSelectedYear(selectedYear) {
+            this.selectedYear = selectedYear
+        },
     },
     beforeMount() {
-        // this.getMileages()
+        this.getMileages()
     }
 }
 </script>

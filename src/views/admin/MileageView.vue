@@ -9,13 +9,12 @@
         <div class="row justify-content-center">
             <div class="col col-4">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
-
             </div>
             <div class="col col-4">
-                <MonthsDropdown/>
+                <MonthsDropdown @event-emit-selected-months="setSelectedMonth"/>
             </div>
             <div class="col col-4">
-                <YearsDropdown/>
+                <YearsDropdown @event-emit-selected-year="setSelectedYear"/>
             </div>
         </div>
 
@@ -52,9 +51,17 @@ export default {
     },
     methods: {
         setSelectedVanId(selectedVanId) {
-
+            this.$refs.mileageTableRef.setSelectedVanId(selectedVanId)
+            this.$refs.mileageTableRef.getMileages()
         },
-
+        setSelectedMonth(selectedMonth) {
+            this.$refs.mileageTableRef.setSelectedMonth(selectedMonth)
+            this.$refs.mileageTableRef.getMileages()
+        },
+        setSelectedYear(selectedYear) {
+            this.$refs.mileageTableRef.setSelectedYear(selectedYear)
+            this.$refs.mileageTableRef.getMileages()
+        },
     }
 }
 </script>
