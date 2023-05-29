@@ -8,6 +8,7 @@ import AdminDriversView from "@/views/admin/AdminDriversView.vue";
 import AdminMaintenanceView from "@/views/admin/AdminMaintenanceView.vue";
 import AdminMileageView from "@/views/admin/AdminMileageView.vue";
 import ErrorView from "@/views/ErrorView.vue";
+import AdminMessageView from "@/views/admin/AdminMessageView.vue";
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: '/error',
     name: 'errorRoute',
     component: ErrorView
+  },
+  {
+    path: '/admin/message',
+    name: 'adminMessageRoute',
+    component: AdminMessageView
   }
 
 ]

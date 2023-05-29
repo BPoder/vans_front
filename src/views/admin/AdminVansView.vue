@@ -10,11 +10,10 @@
     </div>
 </template>
 
-
 <script>
-import AdminVansTable from "@/views/admin/AdminVansTable.vue";
-import VansDropdown from "@/views/admin/VansDropdown.vue";
-import CitiesDropdown from "@/views/admin/CitiesDropdown.vue";
+import AdminVansTable from "@/components/tables/AdminVansTable.vue";
+import VansDropdown from "@/components/dropdowns/VansDropdown.vue";
+import CitiesDropdown from "@/components/dropdowns/CitiesDropdown.vue";
 
 export default {
     name: 'AdminVansView',

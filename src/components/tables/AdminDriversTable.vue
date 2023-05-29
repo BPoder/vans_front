@@ -1,29 +1,41 @@
 <template>
-    <div class="container">
-        <div class="justify-content-sm-center bd-highlight">
-            <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
-            <select>
-                <option selected value="=0">Kõik juhid</option>
-                <option value="1">One</option>
-            </select>
-        </div>
-        <div class="container mt-4">
-            <div class="justify-content-center mx-4 input-group mt-3">
-                <AdminDriversTable :drivers="drivers"/>
-            </div>
-        </div>
-    </div>
+    <table class="table-secondary table-bordered col-6">
+        <thead>
+        <tr>
+            <th scope="col">Linn</th>
+            <th scope="col">Juht</th>
+            <th scope="col">Kontakt</th>
+            <th scope="col">Juhiluba</th>
+            <th scope="col">Kasutajanimi</th>
+            <th scope="col">Parool</th>
+            <th scope="col">Muuda</th>
+            <th scope="col">Kustuta</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="driver in drivers">
+            <td>{{driver.cityName}}</td>
+            <td>{{driver.driverName}}</td>
+            <td>{{driver.driverPhoneNumber}}</td>
+            <td>{{driver.driversLicense}}</td>
+            <td>{{driver.username}}</td>
+            <td>{{driver.userPassword}}</td>
+            <td>
+                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+            </td>
+            <td>
+                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
 import router from "@/router";
-import AdminDriversTable from "@/components/tables/AdminDriversTable.vue";
-import CitiesDropdown from "@/components/dropdowns/CitiesDropdown.vue";
-
 
 export default {
     name: "DriversTable",
-    components: {CitiesDropdown, AdminDriversTable},
     data() {
         return {
             selectedCityId: 0,
@@ -41,7 +53,7 @@ export default {
             ]
         }
     },
-    methods: {
+    methods:{
         getDrivers: function () {
             this.$http.get("/driver/all-info", {
                     params: {
