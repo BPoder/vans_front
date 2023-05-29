@@ -17,9 +17,7 @@
             <div class="row">
                 <div class="col col-9 container text-center">
                     <VansTable ref="vansTableRef"/>
-
                 </div>
-
             </div>
         </div>
     </div>
