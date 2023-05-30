@@ -1,14 +1,25 @@
 <template>
 
-    <input type="date" name="" id="">
-    <div class="input-group mb-3">
-        <input type="number" class="form-control" aria-describedby="basic-addon1">
 
-        <span class="input-group-text" id="basic-addon1">km</span>
-    </div>
-    <button type="button" class="btn btn-primary">Lisa km</button>
+
+
 
     <div class="container text-center">
+        <div class="row justify-content-center mb-5">
+            <div class="col col-3">
+                <input v-model="driverVanMileage.date" type="date">
+            </div>
+            <div class="col col-3">
+                <div class="input-group mb-3">
+                    <input v-model="driverVanMileage.km" type="number" class="form-control" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">km</span>
+                </div>
+            </div>
+            <div class="col col-3">
+                <button @click="addMileage" type="button" class="btn btn-primary">Lisa km</button>
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col col-6">
                 <div class="card justify-content-center">
@@ -37,15 +48,30 @@ export default {
             userId: sessionStorage.getItem('userId'),
             roleName: sessionStorage.getItem('roleName'),
             driverId: sessionStorage.getItem('driverId'),
+            vanId: sessionStorage.getItem('vanId'),
             vanBasicInfo: {
                 vanId: 0,
                 vanPlateNumber: '',
                 insuranceProvider: '',
                 insurancePhoneNumber: '',
+            },
+            driverVanMileage: {
+                vanId: '',
+                date: '',
+                km: ''
             }
         }
     },
     methods: {
+        addMileage: function () {
+            this.$http.post("/mileage", this.driverVanMileage
+            ).then(response => {
+                alert('õnnestus')
+                const responseBody = response.data
+            }).catch(error => {
+                const errorResponseBody = error.response.data
+            })
+        },
 
 
         getBasicVanInfo() {
@@ -56,6 +82,7 @@ export default {
                 }
             ).then(response => {
                 this.vanBasicInfo = response.data
+                this.driverVanMileage.vanId = this.vanBasicInfo.vanId
                 sessionStorage.setItem('vanPlateNumber', this.vanBasicInfo.vanPlateNumber)
             }).catch(error => {
                     this.errorResponse = error.response.data
