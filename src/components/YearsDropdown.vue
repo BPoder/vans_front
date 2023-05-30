@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         emitSelectedYearNumber() {
-            this.$emit('emit-selected-year-number', Number(this.selectedYearNumber))
+            this.$emit('event-emit-selected-year-number', Number(this.selectedYearNumber))
         },
 
         getYears() {
