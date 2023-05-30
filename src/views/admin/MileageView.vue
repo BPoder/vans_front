@@ -9,7 +9,6 @@
         <div class="row justify-content-center mb-3">
             <div class="col col-4">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
-
             </div>
             <div class="col col-4">
                 <MonthsDropdown @event-emit-selected-month-number="setSelectedMonthNumber"/>
@@ -51,7 +50,7 @@ export default {
             this.$refs.mileageTableRef.getMileages()
         },
         setSelectedMonthNumber(selectedMonthNumber) {
-            this.$refs.mileageTableRef.setSelectedMontNumber(selectedMonthNumber)
+            this.$refs.mileageTableRef.setSelectedMonthNumber(selectedMonthNumber)
             this.$refs.mileageTableRef.getMileages()
         },
         setSelectedYearNumber(selectedYearNumber) {
