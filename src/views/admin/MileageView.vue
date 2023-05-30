@@ -6,24 +6,20 @@
                 <h1>Läbisõit</h1>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3">
             <div class="col col-4">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
+
             </div>
             <div class="col col-4">
-                <MonthsDropdown @event-emit-selected-months="setSelectedMonth"/>
+                <MonthsDropdown @event-emit-selected-month-number="setSelectedMonthNumber"/>
             </div>
             <div class="col col-4">
-                <YearsDropdown @event-emit-selected-year="setSelectedYear"/>
+                <YearsDropdown @event-emit-selected-year-number="setSelectedYearNumber"/>
             </div>
         </div>
 
         <div class="row container justify-content-center">
-            <div class="col col-3">
-                date dropdown
-            </div>
-            <div class="col col-3">
-            </div>
             <div class="row">
                 <div class="col col-9 container text-center">
                     <MileageTable ref="mileageTableRef"/>
@@ -54,14 +50,15 @@ export default {
             this.$refs.mileageTableRef.setSelectedVanId(selectedVanId)
             this.$refs.mileageTableRef.getMileages()
         },
-        setSelectedMonth(selectedMonth) {
-            this.$refs.mileageTableRef.setSelectedMonth(selectedMonth)
+        setSelectedMonthNumber(selectedMonthNumber) {
+            this.$refs.mileageTableRef.setSelectedMontNumber(selectedMonthNumber)
             this.$refs.mileageTableRef.getMileages()
         },
-        setSelectedYear(selectedYear) {
-            this.$refs.mileageTableRef.setSelectedYear(selectedYear)
+        setSelectedYearNumber(selectedYearNumber) {
+            this.$refs.mileageTableRef.setSelectedYearNumber(selectedYearNumber)
             this.$refs.mileageTableRef.getMileages()
         },
+
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <select v-model="selectedMonthNumber" class="form-select" aria-label="Default select example">
+    <select v-model="selectedMonthNumber" v-on:change="emitSelectedMonthNumber" class="form-select" aria-label="Default select example">
         <option value="1">Jaanuar</option>
         <option value="2">Veebruar</option>
         <option value="3">Märts</option>
@@ -21,6 +21,11 @@ export default {
         return {
             selectedMonthNumber: 0
         }
+    },
+    methods:{
+        emitSelectedMonthNumber() {
+            this.$emit('event-emit-selected-month-number', Number(this.selectedMonthNumber))
+        },
     },
     mounted() {
         this.selectedMonthNumber = String( new Date().getMonth() + 1);

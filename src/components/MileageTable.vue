@@ -8,8 +8,12 @@
         </thead>
         <tbody>
         <tr v-for="mileage in mileages">
-            <td>{{mileage.date}}</td>
-            <td>{{mileage.km}}</td>
+            <td>{{ mileage.date }}</td>
+            <td>{{ mileage.km }}</td>
+        </tr>
+        <tr>
+            <th>Päevi kokku {{amountOfDays}}</th>
+            <th>{{mileageTotal}} km</th>
         </tr>
         </tbody>
     </table>
@@ -19,12 +23,14 @@
 import router from "@/router";
 
 export default {
-    name: 'MileageTable',
+    name: "MileageTable",
     data() {
         return {
+            amountOfDays: 0,
+            mileageTotal: 0,
             selectedVanId: 0,
-            selectedMonth: 0,
-            selectedYear: 0,
+            selectedMonthNumber: 0,
+            selectedYearNumber: 0,
             mileages: [
                 {
                     id: 0,
@@ -40,25 +46,43 @@ export default {
             this.$http.get("/mileage/all-info", {
                     params: {
                         vanId: this.selectedVanId,
-                        monthNumber: this.selectedMonth,
-                        yearNumber: this.selectedYear
+                        monthNumber: this.selectedMonthNumber,
+                        yearNumber: this.selectedYearNumber,
                     }
                 }
             ).then(response => {
                 this.mileages = response.data
-            }).catch(() => router.push({name: 'errorRoute'}))
+                this.calculateAndSetAmountOfDays()
+                this.calculateAndSetMileageTotal()
+            }).catch(() => router.push({name: 'errorRoute'}));
         },
+
+        calculateAndSetAmountOfDays() {
+            this.amountOfDays = this.mileages.length
+        },
+        calculateAndSetMileageTotal() {
+            this.mileageTotal = 0
+            this.mileages.forEach(mileage => {
+             this.mileageTotal += mileage.km
+            })
+        },
+
         setSelectedVanId(selectedVanId) {
             this.selectedVanId = selectedVanId
         },
-        setSelectedMonth(selectedMonth) {
-            this.selectedMonth = selectedMonth
+
+        setSelectedMontNumber(selectedMonthNumber) {
+            this.selectedMonthNumber = selectedMonthNumber
         },
-        setSelectedYear(selectedYear) {
-            this.selectedYear = selectedYear
+
+        setSelectedYearNumber(selectedYearNumber) {
+            this.selectedYearNumber = selectedYearNumber
         },
+
     },
     beforeMount() {
+        this.selectedMonthNumber = String( new Date().getMonth() + 1)
+        this.selectedYearNumber = new Date().getFullYear()
         this.getMileages()
     }
 }
