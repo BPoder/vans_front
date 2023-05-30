@@ -1,7 +1,6 @@
 <template>
-    <select v-model="selectedYearNumber" v-on:change="emitSelectedYearNumber" class="form-select"
-            aria-label="Default select example">
-        <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
+    <select v-model="selectedYearNumber" v-on:change="emitSelectedYearNumber" class="form-select" aria-label="Default select example">
+        <option v-for="year in years" :key="year" :value="year">{{year}}</option>
     </select>
 </template>
 <script>

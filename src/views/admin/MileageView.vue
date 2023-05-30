@@ -50,7 +50,7 @@ export default {
             this.$refs.mileageTableRef.getMileages()
         },
         setSelectedMonthNumber(selectedMonthNumber) {
-            this.$refs.mileageTableRef.setSelectedMontNumber(selectedMonthNumber)
+            this.$refs.mileageTableRef.setSelectedMonthNumber(selectedMonthNumber)
             this.$refs.mileageTableRef.getMileages()
         },
         setSelectedYearNumber(selectedYearNumber) {

@@ -19,8 +19,7 @@ export default {
     name: 'MonthsDropdown',
     data() {
         return {
-            selectedMonthNumber: 0,
-
+            selectedMonthNumber: 0
         }
     },
     methods:{
@@ -31,6 +30,5 @@ export default {
     mounted() {
         this.selectedMonthNumber = String( new Date().getMonth() + 1);
     }
-
 }
 </script>

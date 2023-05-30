@@ -71,7 +71,7 @@ export default {
             this.selectedVanId = selectedVanId
         },
 
-        setSelectedMontNumber(selectedMonthNumber) {
+        setSelectedMonthNumber(selectedMonthNumber) {
             this.selectedMonthNumber = selectedMonthNumber
         },
 
