@@ -8,8 +8,12 @@
         </thead>
         <tbody>
         <tr v-for="mileage in mileages">
-            <td>{{mileage.date}}</td>
-            <td>{{mileage.km}}</td>
+            <td>{{ mileage.date }}</td>
+            <td>{{ mileage.km }}</td>
+        </tr>
+        <tr>
+            <th>Päevi kokku {{amountOfDays}}</th>
+            <th>{{mileageTotal}} km</th>
         </tr>
         </tbody>
     </table>
@@ -22,6 +26,8 @@ export default {
     name: "MileageTable",
     data() {
         return {
+            amountOfDays: 0,
+            mileageTotal: 0,
             selectedVanId: 0,
             selectedMonthNumber: 0,
             selectedYearNumber: 0,
@@ -46,20 +52,37 @@ export default {
                 }
             ).then(response => {
                 this.mileages = response.data
-            }).catch(() => router.push({name: 'errorRoute'}))
+                this.calculateAndSetAmountOfDays()
+                this.calculateAndSetMileageTotal()
+            }).catch(() => router.push({name: 'errorRoute'}));
         },
+
+        calculateAndSetAmountOfDays() {
+            this.amountOfDays = this.mileages.length
+        },
+        calculateAndSetMileageTotal() {
+            this.mileageTotal = 0
+            this.mileages.forEach(mileage => {
+             this.mileageTotal += mileage.km
+            })
+        },
+
         setSelectedVanId(selectedVanId) {
             this.selectedVanId = selectedVanId
         },
-        setSelectedMontNumber(selectedMonthNumber){
+
+        setSelectedMontNumber(selectedMonthNumber) {
             this.selectedMonthNumber = selectedMonthNumber
         },
-        setSelectedYearNumber(selectedYearNumber){
+
+        setSelectedYearNumber(selectedYearNumber) {
             this.selectedYearNumber = selectedYearNumber
-        }
+        },
 
     },
     beforeMount() {
+        this.selectedMonthNumber = String( new Date().getMonth() + 1)
+        this.selectedYearNumber = new Date().getFullYear()
         this.getMileages()
     }
 }
