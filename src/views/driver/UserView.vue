@@ -1,4 +1,13 @@
 <template>
+
+    <input type="date" name="" id="">
+    <div class="input-group mb-3">
+        <input type="number" class="form-control" aria-describedby="basic-addon1">
+
+        <span class="input-group-text" id="basic-addon1">km</span>
+    </div>
+    <button type="button" class="btn btn-primary">Lisa km</button>
+
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col col-6">
@@ -24,6 +33,7 @@ export default {
             roleName: sessionStorage.getItem('roleName'),
             driverId: sessionStorage.getItem('driverId'),
             vanBasicInfo: {
+                vanId: 0,
                 vanPlateNumber: '',
                 insuranceProvider: '',
                 insurancePhoneNumber: '',
