@@ -4,7 +4,12 @@
             <div class="col col-6">
                 <div class="card justify-content-center">
                     <div class="card-body">
-                        Sõiduk: {{ this.vanBasicInfo.vanPlateNumber + ', ' + this.vanBasicInfo.insuranceProvider + ', ' + this.vanBasicInfo.insurancePhoneNumber}}
+                        <template v-if="vanBasicInfo.vanPlateNumber !== null">
+                            Sõiduk: {{ this.vanBasicInfo.vanPlateNumber + ', ' + this.vanBasicInfo.insuranceProvider + ', ' + this.vanBasicInfo.insurancePhoneNumber}}
+                        </template>
+                        <template v-else>
+                            Sulle ei ole kaubikut määratud.
+                        </template>
                     </div>
                 </div>
             </div>
@@ -42,9 +47,6 @@ export default {
             ).then(response => {
                 this.vanBasicInfo = response.data
                 sessionStorage.setItem('vanPlateNumber', this.vanBasicInfo.vanPlateNumber)
-                // this.allVans.vanPlateNumber
-                // this.allVans.insuranceProvider
-                // this.allVans.insurancePhoneNumber
             }).catch(error => {
                     this.errorResponse = error.response.data
                     this.message = this.errorResponse.message
