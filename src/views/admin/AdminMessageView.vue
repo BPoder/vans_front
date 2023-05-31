@@ -15,28 +15,31 @@
 
         </div>
         <span class="border border-dark col-6 mt-5">
-            <table class="table-secondary">
-                <table class="table">
-                    <thead>
-                    <div class="col mt-2 fw-bold fs-5">
-                        Logi
-                    </div>
-                    </thead>
-                    <tbody>
-                    <tr class="mt-3">
-                        <th class="col-2" scope="row">*Saatja tuleb backist*</th>
-                        <th class="col-6">*Sõnum tuleb backist häääääääääääääääääääääässsti pikk*</th>
-                    </tr>
-                    </tbody>
-                </table>
-            </table>
+            <MessageLogTable ref="messageLogTableRef"/>
             </span>
     </div>
 </template>
 
 <script>
+import MessageLogTable from "@/components/MessageLogTable.vue";
+
 export default {
-    name: 'AdminMessageView'
+    name: 'AdminMessageView',
+    components: {MessageLogTable},
+    data() {
+        return {
+            userId: sessionStorage.getItem('userId')
+        }
+    },
+    methods: {
+
+
+    }
+
+
+
+
+
 }
 </script>
 
