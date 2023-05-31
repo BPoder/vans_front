@@ -20,7 +20,10 @@
             <td>{{van.insuranceProvider + ' ' + van.insurancePhoneNumber}}</td>
             <td>{{van.nextInspection}}</td>
             <td>
-                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+                <div :key="van.id">
+                    <span> {{ van.id }}</span>
+                    <font-awesome-icon @click="editVan(van)" class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+                </div>
             </td>
             <td>
                 <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
@@ -32,6 +35,8 @@
 
 <script>
 import router from "@/router";
+import axios from "axios";
+
 
 export default {
     name: 'VansTable',
@@ -74,9 +79,11 @@ export default {
             this.selectedVanId = selectedVanId
         },
     },
+
     beforeMount() {
         this.getVans()
 
     }
-}
+    }
+
 </script>

@@ -36,7 +36,7 @@ import YearsDropdown from "@/components/dropdowns/YearsDropdown.vue";
 
 
 export default {
-    name: "MileageView",
+    name: 'MileageView',
     components: {YearsDropdown, MonthsDropdown, MileageTable, VansDropdown},
     data() {
         return {
