@@ -22,7 +22,7 @@ export default {
     name: 'MessageLogTable',
     data() {
         return {
-            selectedUserId: 0,
+            selectedUserId: sessionStorage.getItem('userId'),
             messages: [
                 {
                     messageId: 0,
