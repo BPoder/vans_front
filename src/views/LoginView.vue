@@ -62,7 +62,7 @@ export default {
                 }
             }).then(response => {
                 this.loginResponse = response.data
-                sessionStorage.setItem('userId', this.loginResponse.user)
+                sessionStorage.setItem('userId', this.loginResponse.userId)
                 sessionStorage.setItem('roleName', this.loginResponse.roleName)
                 sessionStorage.setItem('driverId', this.loginResponse.driverId)
                 this.$emit('event-update-nav-menu')

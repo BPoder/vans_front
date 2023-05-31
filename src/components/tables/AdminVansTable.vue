@@ -14,23 +14,22 @@
         </thead>
         <tbody>
         <tr v-for="van in vans">
-            <td>{{ van.cityName }}</td>
-            <td>{{ van.model }}</td>
-            <td>{{ van.plateNumber }}</td>
-            <td>{{ van.insuranceProvider + ' ' + van.insurancePhoneNumber }}</td>
-            <td>{{ van.nextInspection }}</td>
+            <td>{{van.cityName}}</td>
+            <td>{{van.model}}</td>
+            <td>{{van.plateNumber}}</td>
+            <td>{{van.insuranceProvider + ' ' + van.insurancePhoneNumber}}</td>
+            <td>{{van.nextInspection}}</td>
             <td>
-                <font-awesome-icon @click="navigateToEditVanInfo(van.vanId)" class="hoverable-link me-3"
-                                   :icon="['fas', 'pen-to-square']"/>
+                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
             </td>
             <td>
-                <font-awesome-icon @click="openDeleteVanModal(van.status)" class="hoverable-link"
-                                   :icon="['fas', 'xmark']"/>
+                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
             </td>
         </tr>
         </tbody>
     </table>
 </template>
+
 <script>
 import router from "@/router";
 
@@ -40,7 +39,7 @@ export default {
         return {
             selectedCityId: 0,
             selectedVanId: 0,
-            vans: [
+            vans:[
                 {
                     vanId: 0,
                     model: '',
@@ -56,7 +55,7 @@ export default {
             ]
         }
     },
-    methods: {
+    methods:{
         getVans: function () {
             this.$http.get("/van/all-info", {
                     params: {
@@ -74,24 +73,7 @@ export default {
         setSelectedVanId(selectedVanId) {
             this.selectedVanId = selectedVanId
         },
-    navigateToEditVanInfo(vanId) {
-        router.push({name: 'adminVansRoute', query: {vanInfo: vanId}})
     },
-        openDeleteVanModal(vanId) {
-            this.clearSuccessMessage()
-            this.$refs.deleteVanModalRef.$refs.vanModalRef.getVanInfoAndOpenLocationModal(vanId)
-            this.$refs.deleteVanModalRef.$refs.setSelectedVanId(vanId)
-        },
-        clearSuccessMessage() {
-            sessionStorage.removeItem('sucessMessage')
-            this.$emit('event-clear-success-message')
-        },
-
-        eventVanIdDeleted(sucvessMessage) {
-
-        }
-    },
-
     beforeMount() {
         this.getVans()
 

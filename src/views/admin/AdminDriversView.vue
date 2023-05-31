@@ -2,10 +2,7 @@
     <div class="container">
         <div class="justify-content-sm-center bd-highlight">
             <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
-            <select>
-                <option selected value="=0">Kõik juhid</option>
-                <option value="1">One</option>
-            </select>
+            <DriversDropdown @event-emit-selected-driver-id="setSelectedDriverId"/>
         </div>
         <div class="container mt-4">
             <div class="justify-content-center mx-4 input-group mt-3">
@@ -19,11 +16,12 @@
 import router from "@/router";
 import AdminDriversTable from "@/components/tables/AdminDriversTable.vue";
 import CitiesDropdown from "@/components/dropdowns/CitiesDropdown.vue";
+import DriversDropdown from "@/components/dropdowns/DriversDropdown.vue";
 
 
 export default {
     name: "DriversTable",
-    components: {CitiesDropdown, AdminDriversTable},
+    components: {DriversDropdown, CitiesDropdown, AdminDriversTable},
     data() {
         return {
             selectedCityId: 0,

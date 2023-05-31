@@ -14,17 +14,17 @@
         </thead>
         <tbody>
         <tr v-for="driver in drivers">
-            <td>{{driver.cityName}}</td>
-            <td>{{driver.driverName}}</td>
-            <td>{{driver.driverPhoneNumber}}</td>
-            <td>{{driver.driversLicense}}</td>
-            <td>{{driver.username}}</td>
-            <td>{{driver.userPassword}}</td>
+            <td>{{ driver.cityName }}</td>
+            <td>{{ driver.driverName }}</td>
+            <td>{{ driver.driverPhoneNumber }}</td>
+            <td>{{ driver.driversLicense }}</td>
+            <td>{{ driver.username }}</td>
+            <td>{{ driver.userPassword }}</td>
             <td>
-                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+                <font-awesome-icon class="hoverable-link me-3" :icon="['fas', 'pen-to-square']"/>
             </td>
             <td>
-                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
+                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']"/>
             </td>
         </tr>
         </tbody>
@@ -35,7 +35,7 @@
 import router from "@/router";
 
 export default {
-    name: "DriversTable",
+    name: 'DriversTable',
     data() {
         return {
             selectedCityId: 0,
@@ -53,7 +53,7 @@ export default {
             ]
         }
     },
-    methods:{
+    methods: {
         getDrivers: function () {
             this.$http.get("/driver/all-info", {
                     params: {
@@ -75,6 +75,6 @@ export default {
     beforeMount() {
         this.getDrivers()
     }
-
 }
+
 </script>

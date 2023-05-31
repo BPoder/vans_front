@@ -5,7 +5,7 @@
             <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
         </div>
         <div class="justify-content-center mx-4 input-group mt-3">
-            <AdminVansTable/>
+            <AdminVansTable ref="adminVansTableRef"/>
         </div>
     </div>
 </template>
@@ -25,14 +25,19 @@ export default {
         }
     },
     methods: {
-        setSelectedCityId(selectedCityId){
-            this.$refs.vansTableRef.setSelectedCityId(selectedCityId)
-            this.$refs.vansTableRef.getVans()
+
+        setSelectedCityId(selectedCityId) {
+            if (this.$refs.vansTableRef && this.$refs.vansTableRef.setSelectedCityId) {
+                this.$refs.vansTableRef.setSelectedCityId(selectedCityId)
+                this.$refs.vansTableRef.getVans();
+            }
         },
 
         setSelectedVanId(selectedVanId) {
-            this.$refs.vansTableRef.setSelectedVanId(selectedVanId)
-            this.$refs.vansTableRef.getVans()
+            if (this.$refs.vansTableRef && this.$refs.vansTableRef.setSelectedVanId) {
+                this.$refs.vansTableRef.setSelectedVanId(selectedVanId);
+                this.$refs.vansTableRef.getVans();
+            }
         }
     }
 }
