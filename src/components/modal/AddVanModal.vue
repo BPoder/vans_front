@@ -29,6 +29,7 @@
 import Modal from "@/components/modal/Modal.vue";
 import DriversDropdown from "@/components/DriversDropdown.vue";
 import CitiesDropdown from "@/components/CitiesDropdown.vue";
+import router from "@/router";
 
 export default {
     name: 'LogoutModal',
@@ -36,8 +37,8 @@ export default {
     data() {
         return {
             addedVanInfo: {
-                cityId: 1,
-                driverId: 2,
+                cityId: 0,
+                driverId: 0,
                 model: '',
                 plateNumber: '',
                 insuranceProvider: '',
@@ -64,6 +65,8 @@ export default {
                 .post("/van", this.addedVanInfo)
                 .then(response => {
                     alert('õnnestus');
+                    this.$refs.modalRef.closeModal()
+                    window.location.reload()
                     const responseBody = response.data;
                 })
                 .catch(error => {

@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <div class="row container justify-content-center">
+        <div class="row justify-content-center">
             <div class="col col-3">
                 <CitiesDropdown @event-emit-selected-city-id="setSelectedCityId"/>
             </div>
