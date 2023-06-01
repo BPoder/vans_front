@@ -36,8 +36,8 @@ export default {
     data() {
         return {
             addedVanInfo: {
-                cityId: 1,
-                driverId: 2,
+                cityId: 0,
+                driverId: 0,
                 model: '',
                 plateNumber: '',
                 insuranceProvider: '',
@@ -45,7 +45,6 @@ export default {
                 nextInspection: ''
             }
         }
-
     },
     methods: {
         setSelectedDriverId(selectedDriverId) {
