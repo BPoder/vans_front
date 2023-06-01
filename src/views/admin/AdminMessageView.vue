@@ -1,11 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col col-4">
-            <select class="form-select mb-2" aria-label="Default select example">
-                <option selected>Vali saaja</option>
-                <option value="1">Juht1</option>
-                <option value="2">Juht2</option>
-            </select>
+            <UserDropdown @event-emit-selected-user-id=""/>
             <div class="input-group m">
                 <textarea class="form-control" aria-label="With textarea"></textarea>
             </div>
@@ -22,16 +18,18 @@
 
 <script>
 import MessageLogTable from "@/components/MessageLogTable.vue";
+import UserDropdown from "@/views/admin/UserDropdown.vue";
 
 export default {
     name: 'AdminMessageView',
-    components: {MessageLogTable},
+    components: {UserDropdown, MessageLogTable},
     data() {
         return {
             userId: sessionStorage.getItem('userId')
         }
     },
     methods: {
+
 
 
     }
