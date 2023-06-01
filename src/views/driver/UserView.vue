@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col col-3">
-                <button @click="addMileage" type="button" class="btn btn-primary">Lisa km</button>
+                <button @click="addMileage" type="button" class="btn btn-secondary btn-sm">Lisa km</button>
             </div>
         </div>
 

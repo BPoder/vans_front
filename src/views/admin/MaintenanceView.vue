@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img src="../../assets/teambuild.jpg">
+    <img src="../../assets/maintenance.gif">
   </div>
 </template>
 

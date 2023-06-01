@@ -1,5 +1,5 @@
 <template>
-    <select v-model="selectedMonthNumber" v-on:change="emitSelectedMonthNumber" class="form-select" aria-label="Default select example">
+    <select v-model="selectedMonthNumber" v-on:change="emitSelectedMonthNumber" class="“form-select btn btn-secondary btn-sm dropdown-toggle me-2”" aria-label="Default select example">
         <option value="1">Jaanuar</option>
         <option value="2">Veebruar</option>
         <option value="3">Märts</option>

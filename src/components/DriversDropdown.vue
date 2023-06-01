@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selectedDriverId" v-on:change="emitSelectedDriverId" class="form-select"
+  <select v-model="selectedDriverId" v-on:change="emitSelectedDriverId" class="“form-select btn btn-secondary btn-sm dropdown-toggle me-2”"
           aria-label="Default select example">
       <option selected value="0">Kõik juhid</option>
       <option v-for="driver in drivers" :key="driver.driverId" :value="driver.driverId">{{driver.driverName}}</option>

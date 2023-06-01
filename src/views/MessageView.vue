@@ -3,9 +3,9 @@
         <div class="col col-4">
             <UserDropdown v-model="userMessage.receiverUserId" @event-emit-selected-user-id="selectedUserId"/>
             <div class="input-group m">
-                <textarea v-model="userMessage.messageText" class="form-control" aria-label="With textarea"></textarea>
+                <textarea v-model="userMessage.messageText" class="form-control" aria-label="With textarea" placeholder="Sisesta teade siia"></textarea>
             </div>
-            <button v-on:click="addMessage" type="button" class="btn btn-light m-2">Saada teade</button>
+            <button v-on:click="addMessage" type="button" class="btn btn-secondary btn-sm m-2">Saada teade</button>
         </div>
         <div>
 

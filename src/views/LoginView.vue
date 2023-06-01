@@ -12,7 +12,7 @@
                     <label for="password" class="form-label">Salasõna</label>
                     <input v-model="password" type="password" class="form-control" id="password">
                 </div>
-                <button v-on:click="login" type="submit" class="btn btn-primary">Logi sisse</button>
+                <button v-on:click="login" type="submit" class="btn btn-primary m-2">Logi sisse</button>
             </div>
         </div>
     </div>
