@@ -10,13 +10,13 @@
                     </h1>
                     <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body col">
                     <slot name="body">
                         default body
                     </slot>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="closeModal">{{ closeButtonName }}</button>
+                    <button type="button" class="btn btn-secondary justify-content-center" @click="closeModal">{{ closeButtonName }}</button>
                     <slot name="footer">
                     </slot>
                 </div>

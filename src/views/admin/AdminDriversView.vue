@@ -20,7 +20,7 @@ import DriversDropdown from "@/components/dropdowns/DriversDropdown.vue";
 
 
 export default {
-    name: "DriversTable",
+    name: 'AdminDriversView',
     components: {DriversDropdown, CitiesDropdown, AdminDriversTable},
     data() {
         return {
@@ -41,7 +41,7 @@ export default {
     },
     methods: {
         getDrivers: function () {
-            this.$http.get("/driver/all-info", {
+            this.$http.get("/admin/driver/all-info", {
                     params: {
                         cityId: this.selectedCityId,
                         driverId: this.selectedDriverId,
@@ -52,15 +52,18 @@ export default {
             }).catch(() => router.push({name: 'errorRoute'}))
         },
         setSelectedCityId(selectedCityId) {
-            this.selectedCityId = selectedCityId
+            this.selectedCityId = selectedCityId;
+            this.getDrivers();
         },
-        setSelectedDriverId(selectedDriverId) {
-            this.selectedDriverId = selectedDriverId
-        },
-    },
-    beforeMount() {
-        this.getDrivers()
-    }
 
+        setSelectedDriverId(selectedDriverId) {
+            this.selectedDriverId = selectedDriverId;
+            this.getDrivers();
+        },
+        beforeMount() {
+            this.getDrivers()
+        }
+
+    }
 }
 </script>

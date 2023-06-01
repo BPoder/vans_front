@@ -1,6 +1,7 @@
 <template>
+    <EditVanModal ref="editVanModalRef"></EditVanModal>
 
-    <table class="table-secondary table-bordered col-6">
+    <table class="center table-secondary table-bordered col-8">
         <thead>
         <tr>
             <th scope="col">Linn</th>
@@ -14,19 +15,20 @@
         </thead>
         <tbody>
         <tr v-for="van in vans">
-            <td>{{van.cityName}}</td>
-            <td>{{van.model}}</td>
-            <td>{{van.plateNumber}}</td>
-            <td>{{van.insuranceProvider + ' ' + van.insurancePhoneNumber}}</td>
-            <td>{{van.nextInspection}}</td>
+            <td>{{ van.cityName }}</td>
+            <td>{{ van.model }}</td>
+            <td>{{ van.plateNumber }}</td>
+            <td>{{ van.insuranceProvider + ' ' + van.insurancePhoneNumber }}</td>
+            <td>{{ van.nextInspection }}</td>
             <td>
                 <div :key="van.id">
                     <span> {{ van.id }}</span>
-                    <font-awesome-icon @click="editVan(van)" class="hoverable-link me-3" :icon="['fas', 'pen-to-square']" />
+                    <font-awesome-icon @click="handleVanEditing" class="hoverable-link me-3"
+                                       :icon="['fas', 'pen-to-square']"/>
                 </div>
             </td>
             <td>
-                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']" />
+                <font-awesome-icon class="hoverable-link" :icon="['fas', 'xmark']"/>
             </td>
         </tr>
         </tbody>
@@ -35,16 +37,16 @@
 
 <script>
 import router from "@/router";
-import axios from "axios";
-
+import EditVanModal from "@/components/modal/EditVanModal.vue";
 
 export default {
-    name: 'VansTable',
+    name: 'AdminVansTable',
+    components: {EditVanModal},
     data() {
         return {
             selectedCityId: 0,
             selectedVanId: 0,
-            vans:[
+            vans: [
                 {
                     vanId: 0,
                     model: '',
@@ -60,7 +62,11 @@ export default {
             ]
         }
     },
-    methods:{
+    methods: {
+        handleVanEditing() {
+            this.$refs.editVanModalRef.$refs.modalRef.openModal()
+        },
+
         getVans: function () {
             this.$http.get("/van/all-info", {
                     params: {
@@ -84,6 +90,7 @@ export default {
         this.getVans()
 
     }
-    }
+}
+
 
 </script>

@@ -1,42 +1,53 @@
 <template>
     <div class="row justify-content-center">
+        <h4>Teated</h4>
         <div class="col col-4">
-            <select class="form-select mb-2" aria-label="Default select example">
-                <option selected>Vali saaja</option>
-                <option value="1">Juht1</option>
-                <option value="2">Juht2</option>
-            </select>
+            <UserDropdown v-model="userMessage.receiverUserId" @event-emit-selected-user-id="selectedUserId"/>
             <div class="input-group m">
-                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <textarea v-model="userMessage.messageText" class="form-control" aria-label="With textarea"></textarea>
             </div>
-            <button v-on:click="" type="button" class="btn btn-light m-2">Saada teade</button>
+            <button v-on:click="addMessage" type="button"
+                    class="btn btn-secondary btn-sm mt-2">Saada teade</button>
         </div>
-        <div>
-
-        </div>
-        <span class="border border-dark col-6 mt-5">
-            <table class="table-secondary">
-                <table class="table">
-                    <thead>
-                    <div class="col mt-2 fw-bold fs-5">
-                        Logi
-                    </div>
-                    </thead>
-                    <tbody>
-                    <tr class="mt-3">
-                        <th class="col-2" scope="row">*Saatja tuleb backist*</th>
-                        <th class="col-6">*Sõnum tuleb backist häääääääääääääääääääääässsti pikk*</th>
-                    </tr>
-                    </tbody>
-                </table>
-            </table>
+            <div>
+            </div>
+        <span class="border border-dark col-6 mt-5 justify-content-center">
+            <MessageLogTable ref="messageLogTableRef"/>
             </span>
     </div>
 </template>
 
 <script>
+import MessageLogTable from "@/components/MessageLogTable.vue";
+import UserDropdown from "@/views/admin/UserDropdown.vue";
+
 export default {
-    name: 'AdminMessageView'
+    name: 'AdminMessageView',
+    components: {UserDropdown, MessageLogTable},
+    data() {
+        return {
+            // userId: sessionStorage.getItem('userId'),
+            selectedUserId: 0,
+            userMessage: {
+                messageText: '',
+                receiverUserId: 0,
+                senderUserId: sessionStorage.getItem('userId')
+            }
+        }
+    },
+    methods: {
+        addMessage: function () {
+            this.$http.post("/admin/message", this.userMessage
+            ).then(response => {
+                alert('õnnestus')
+                const responseBody = response.data
+                this.userMessage.messageText = ''
+                window.location.reload()
+            }).catch(error => {
+                const errorResponseBody = error.response.data
+            })
+        },
+    }
 }
 </script>
 

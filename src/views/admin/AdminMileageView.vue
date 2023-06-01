@@ -1,9 +1,9 @@
 <template>
-    <div class="container text-center">
+    <div class="container justify-content-center">
         <div class="row">
             <div class="col">
                 <!--                <AlertSuccess :message="successMessage"/>-->
-                <h1>Läbisõit</h1>
+                <h2>Läbisõit</h2>
             </div>
         </div>
         <div class="row justify-content-center mb-3">

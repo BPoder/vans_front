@@ -1,5 +1,5 @@
 <template>
-    <div class="btn-group width=1 length=2 me-2">
+    <div class="btn-group me-2">
         <select v-model="selectedVanId" v-on:change="emitSelectedVanId"
                 class="form-select btn btn-secondary btn-sm dropdown-toggle">
             <option selected value="0">Vali sõiduk</option>
@@ -25,7 +25,7 @@ export default {
             ]
         }
     },
-    methods:{
+    methods: {
         emitSelectedVanId() {
             this.$emit('event-emit-selected-van-id', Number(this.selectedVanId))
         },
