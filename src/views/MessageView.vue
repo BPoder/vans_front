@@ -21,7 +21,7 @@ import MessageLogTable from "@/components/MessageLogTable.vue";
 import UserDropdown from "@/views/admin/UserDropdown.vue";
 
 export default {
-    name: 'AdminMessageView',
+    name: 'MessageView',
     components: {UserDropdown, MessageLogTable},
     data() {
         return {

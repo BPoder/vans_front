@@ -3,12 +3,11 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import UserView from "@/views/driver/UserView.vue";
 import VansView from "@/views/admin/VansView.vue";
-import UserMessageView from "@/views/driver/UserMessageView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 import MaintenanceView from "@/views/admin/MaintenanceView.vue";
 import DriversView from "@/views/admin/DriversView.vue";
 import MileageView from "@/views/admin/MileageView.vue";
-import AdminMessageView from "@/views/admin/AdminMessageView.vue";
+import MessageView from "@/views/MessageView.vue";
 
 const routes = [
   {
@@ -25,11 +24,6 @@ const routes = [
     path: '/user',
     name: 'userRoute',
     component: UserView
-  },
-  {
-    path: '/usermessage',
-    name: 'userMessageRoute',
-    component: UserMessageView
   },
   {
     path: '/vans',
@@ -57,9 +51,9 @@ const routes = [
     component: MileageView
   },
   {
-    path: '/adminmessage',
-    name: 'adminMessageRoute',
-    component: AdminMessageView
+    path: '/message',
+    name: 'MessageRoute',
+    component: MessageView
   },
 ]
 
