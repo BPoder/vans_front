@@ -1,4 +1,5 @@
 <template>
+    <AddVanModal ref="addVanModalRef"></AddVanModal>
     <div class="container text-center">
         <div class="row">
             <div class="col">
@@ -14,6 +15,8 @@
             <div class="col col-3">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
             </div>
+            <button @click="handleVanAdding" type="button"
+                    class="btn btn-secondary btn-sm me-2 col-2">Lisa kaubik</button>
             <div class="row">
                 <div class="col col-9 container text-center">
                     <VansTable ref="vansTableRef"/>
@@ -27,10 +30,12 @@
 import VansTable from "@/components/VansTable.vue";
 import CitiesDropdown from "@/components/CitiesDropdown.vue";
 import VansDropdown from "@/components/VansDropdown.vue";
+import AddVanModal from "@/components/modal/AddVanModal.vue";
+
 
 export default {
     name: "VansView",
-    components: {VansDropdown, CitiesDropdown, VansTable},
+    components: {VansDropdown, CitiesDropdown, VansTable, AddVanModal},
     data() {
         return{
             userId: sessionStorage.getItem('userId'),
@@ -38,6 +43,10 @@ export default {
         }
     },
     methods: {
+        handleVanAdding() {
+            this.$refs.addVanModalRef.$refs.modalRef.openModal()
+        },
+
         setSelectedCityId(selectedCityId){
             this.$refs.vansTableRef.setSelectedCityId(selectedCityId)
             this.$refs.vansTableRef.getVans()
