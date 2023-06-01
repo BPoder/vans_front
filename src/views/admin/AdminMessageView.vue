@@ -1,11 +1,11 @@
 <template>
     <div class="row justify-content-center">
         <div class="col col-4">
-            <UserDropdown @event-emit-selected-user-id=""/>
+            <UserDropdown v-model="userMessage.receiverUserId" @event-emit-selected-user-id="selectedUserId"/>
             <div class="input-group m">
-                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <textarea v-model="userMessage.messageText" class="form-control" aria-label="With textarea"></textarea>
             </div>
-            <button v-on:click="" type="button" class="btn btn-light m-2">Saada teade</button>
+            <button v-on:click="addMessage" type="button" class="btn btn-light m-2">Saada teade</button>
         </div>
         <div>
 
@@ -25,19 +25,28 @@ export default {
     components: {UserDropdown, MessageLogTable},
     data() {
         return {
-            userId: sessionStorage.getItem('userId')
+            // userId: sessionStorage.getItem('userId'),
+            selectedUserId: 0,
+            userMessage: {
+                messageText: '',
+                receiverUserId: 0,
+                senderUserId: sessionStorage.getItem('userId')
+            }
         }
     },
     methods: {
-
-
-
+        addMessage: function () {
+            this.$http.post("/message", this.userMessage
+            ).then(response => {
+                alert('õnnestus')
+                const responseBody = response.data
+                this.userMessage.messageText = ''
+                window.location.reload()
+            }).catch(error => {
+                const errorResponseBody = error.response.data
+            })
+        },
     }
-
-
-
-
-
 }
 </script>
 
