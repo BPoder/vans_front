@@ -9,15 +9,15 @@
                 <router-link to="/maintenance">Hooldused</router-link> |
                 <router-link to="/drivers">Juhid</router-link> |
                 <router-link to="/mileage">Läbisõit</router-link> |
-                <router-link to="/adminMessage">Teated</router-link> |
+<!--                <router-link to="/adminMessage">Teated</router-link> |-->
             </template>
 
             <template v-else>
                 <router-link to="/user">Kodu</router-link> |
-                <router-link to="/userMessage">Teated</router-link>
+<!--                <router-link to="/userMessage">Teated</router-link>-->
             </template>
            |
-
+            <router-link to="/adminMessage">Teated</router-link> |
             <router-link to="#" @click="handleLogout">Välja logimine</router-link> |
         </template>
 
