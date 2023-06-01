@@ -6,14 +6,14 @@
                 <h1>Läbisõit</h1>
             </div>
         </div>
-        <div class="row justify-content-center mb-3">
-            <div class="col col-4">
+        <div class="row justify-content-center">
+            <div class="col col-3">
                 <VansDropdown @event-emit-selected-van-id="setSelectedVanId"/>
             </div>
-            <div class="col col-4">
+            <div class="col col-3">
                 <MonthsDropdown @event-emit-selected-month-number="setSelectedMonthNumber"/>
             </div>
-            <div class="col col-4">
+            <div class="col col-3">
                 <YearsDropdown @event-emit-selected-year-number="setSelectedYearNumber"/>
             </div>
         </div>
