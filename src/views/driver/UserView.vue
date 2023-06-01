@@ -1,13 +1,8 @@
 <template>
-
-
-
-
-
     <div class="container text-center">
         <div class="row justify-content-center mb-5">
             <div class="col col-3">
-                <input v-model="driverVanMileage.date" type="date">
+                <input v-model="driverVanMileage.date" type="date" :max="getCurrentDate()">
             </div>
             <div class="col col-3">
                 <div class="input-group mb-3">
@@ -35,7 +30,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -89,10 +83,16 @@ export default {
                     this.message = this.errorResponse.message
                 }
             )
-        }
+        },
+        getCurrentDate() {
+            return new Date().toISOString().slice(0, 10);
+        },
     },
+
     beforeMount() {
         this.getBasicVanInfo()
+        const currentDate = new Date().toISOString().slice(0, 10);
+        this.driverVanMileage.date = currentDate
     }
 }
 </script>
